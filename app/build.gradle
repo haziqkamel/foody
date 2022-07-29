@@ -115,7 +115,7 @@ dependencies {
 
     //Shimmer
     implementation "com.facebook.shimmer:shimmer:$shimmerVersion"
-    implementation "com.todkars:shimmer-recyclerview:$shimmerRecyclerViewVersion"
+//    implementation 'com.todkars:shimmer-recyclerview:0.4.1'
 
     //Jsoup
     implementation "org.jsoup:jsoup:$jsoupVersion"
