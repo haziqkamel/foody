@@ -1,4 +1,4 @@
-package dev.haziqkamel.foody
+package dev.haziqkamel.foody.data.network
 
 import dev.haziqkamel.foody.models.foodRecipe.FoodRecipe
 import retrofit2.Response

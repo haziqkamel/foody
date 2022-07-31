@@ -4,8 +4,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dev.haziqkamel.foody.Constant.Companion.BASE_URL
-import dev.haziqkamel.foody.FoodRecipesApi
+import dev.haziqkamel.foody.util.Constant.Companion.BASE_URL
+import dev.haziqkamel.foody.data.network.FoodRecipesApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

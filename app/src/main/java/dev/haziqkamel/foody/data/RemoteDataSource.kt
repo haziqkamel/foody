@@ -1,5 +1,6 @@
-package dev.haziqkamel.foody
+package dev.haziqkamel.foody.data
 
+import dev.haziqkamel.foody.data.network.FoodRecipesApi
 import dev.haziqkamel.foody.models.foodRecipe.FoodRecipe
 import retrofit2.Response
 import javax.inject.Inject
