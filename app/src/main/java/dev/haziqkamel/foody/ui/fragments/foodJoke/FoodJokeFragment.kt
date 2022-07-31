@@ -1,10 +1,11 @@
-package dev.haziqkamel.foody
+package dev.haziqkamel.foody.ui.fragments.foodJoke
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import dev.haziqkamel.foody.R
 
 class FoodJokeFragment : Fragment() {
     override fun onCreateView(

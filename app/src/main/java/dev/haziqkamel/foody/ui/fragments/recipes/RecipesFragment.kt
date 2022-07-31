@@ -1,10 +1,11 @@
-package dev.haziqkamel.foody
+package dev.haziqkamel.foody.ui.fragments.recipes
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import dev.haziqkamel.foody.R
 import kotlinx.android.synthetic.main.fragment_recipes.view.*
 
 
