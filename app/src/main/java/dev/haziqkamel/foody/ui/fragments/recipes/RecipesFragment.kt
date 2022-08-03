@@ -14,6 +14,7 @@ import dev.haziqkamel.foody.R
 import dev.haziqkamel.foody.adapters.RecipesAdapter
 import dev.haziqkamel.foody.util.Constant.Companion.API_KEY
 import dev.haziqkamel.foody.util.NetworkResult
+import dev.haziqkamel.foody.viewmodels.RecipesViewModel
 import kotlinx.android.synthetic.main.fragment_recipes.view.*
 
 
@@ -21,12 +22,14 @@ import kotlinx.android.synthetic.main.fragment_recipes.view.*
 class RecipesFragment : Fragment() {
 
     private lateinit var mainViewModel: MainViewModel
+    private lateinit var recipesViewModel: RecipesViewModel
     private val mAdapter by lazy { RecipesAdapter() }
     private lateinit var mView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        recipesViewModel = ViewModelProvider(requireActivity()).get(RecipesViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -43,7 +46,7 @@ class RecipesFragment : Fragment() {
     }
 
     private fun requestApiData() {
-        mainViewModel.getRecipes(applyQueries())
+        mainViewModel.getRecipes(recipesViewModel.applyQueries())
         mainViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
 
             when (response) {
@@ -66,18 +69,6 @@ class RecipesFragment : Fragment() {
         }
     }
 
-    private fun applyQueries(): HashMap<String, String> {
-        val queries: HashMap<String, String> = HashMap()
-
-        queries["number"] = "50"
-        queries["apiKey"] = API_KEY
-        queries["type"] = "snack"
-        queries["diet"] = "vegan"
-        queries["addRecipeInformation"] = "true"
-        queries["fillIngredients"] = "true"
-
-        return queries
-    }
 
     private fun setupRecyclerView() {
         mView.recyclerView.adapter = mAdapter
