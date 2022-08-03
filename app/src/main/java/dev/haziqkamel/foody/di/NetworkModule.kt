@@ -3,7 +3,7 @@ package dev.haziqkamel.foody.di
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.android.components.ApplicationComponent
 import dev.haziqkamel.foody.util.Constant.Companion.BASE_URL
 import dev.haziqkamel.foody.data.network.FoodRecipesApi
 import okhttp3.OkHttpClient
@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ApplicationComponent::class)
 object NetworkModule {
 
     @Singleton

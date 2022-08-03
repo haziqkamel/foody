@@ -1,25 +1,24 @@
-package dev.haziqkamel.foody
+package dev.haziqkamel.foody.viewmodels
 
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.haziqkamel.foody.data.Repository
 import dev.haziqkamel.foody.models.foodRecipe.FoodRecipe
 import dev.haziqkamel.foody.util.NetworkResult
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.lang.Exception
-import javax.inject.Inject
 
-@HiltViewModel
-class MainViewModel @Inject constructor(
+
+class MainViewModel @ViewModelInject constructor(
     private val repository: Repository,
-    application: MyApplication,
+    application: Application,
 ) :
     AndroidViewModel(application) {
 
