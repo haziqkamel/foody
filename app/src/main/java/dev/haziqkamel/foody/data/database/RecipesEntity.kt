@@ -1,4 +1,4 @@
-package dev.haziqkamel.foody
+package dev.haziqkamel.foody.data.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

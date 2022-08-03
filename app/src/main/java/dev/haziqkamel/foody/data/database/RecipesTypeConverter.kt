@@ -1,4 +1,4 @@
-package dev.haziqkamel.foody
+package dev.haziqkamel.foody.data.database
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
