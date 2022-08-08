@@ -13,6 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.haziqkamel.foody.viewmodels.MainViewModel
 import dev.haziqkamel.foody.R
 import dev.haziqkamel.foody.adapters.RecipesAdapter
+import dev.haziqkamel.foody.databinding.FragmentRecipesBinding
 import dev.haziqkamel.foody.util.NetworkResult
 import dev.haziqkamel.foody.util.observeOnce
 import dev.haziqkamel.foody.viewmodels.RecipesViewModel
@@ -23,10 +24,12 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
 
+    private var _binding: FragmentRecipesBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var mainViewModel: MainViewModel
     private lateinit var recipesViewModel: RecipesViewModel
     private val mAdapter by lazy { RecipesAdapter() }
-    private lateinit var mView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +42,14 @@ class RecipesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        mView = inflater.inflate(R.layout.fragment_recipes, container, false)
+        _binding = FragmentRecipesBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.mainViewModel = mainViewModel
 
         setupRecyclerView()
         readDatabase()
 
-        return mView
+        return binding.root
     }
 
     private fun readDatabase() {
@@ -87,8 +92,8 @@ class RecipesFragment : Fragment() {
 
 
     private fun setupRecyclerView() {
-        mView.recyclerView.adapter = mAdapter
-        mView.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerView.adapter = mAdapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         showShimmerEffect(true)
     }
 
@@ -101,8 +106,13 @@ class RecipesFragment : Fragment() {
     }
 
     private fun showShimmerEffect(showShimmer: Boolean) {
-        mView.shimmerLayout.visibility = if (showShimmer) View.VISIBLE else View.GONE
-        mView.shimmerLayout.showShimmer(showShimmer)
+        binding.shimmerLayout.visibility = if (showShimmer) View.VISIBLE else View.GONE
+        binding.shimmerLayout.showShimmer(showShimmer)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
 
