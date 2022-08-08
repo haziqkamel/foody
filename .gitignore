@@ -15,4 +15,4 @@
 local.properties
 
 # Constant Class
-app/src/main/java/dev/haziqkamel/foody/util/Constant.kt
+#app/src/main/java/dev/haziqkamel/foody/util/Constant.kt

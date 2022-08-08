@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -91,7 +92,7 @@ dependencies {
     kapt "androidx.databinding:databinding-common:4.1.0"
 
     // DataStore
-    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha01"
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
 
     // Recyclerview
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
