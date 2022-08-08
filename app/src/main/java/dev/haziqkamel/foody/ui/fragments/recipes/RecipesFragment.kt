@@ -14,6 +14,7 @@ import dev.haziqkamel.foody.viewmodels.MainViewModel
 import dev.haziqkamel.foody.R
 import dev.haziqkamel.foody.adapters.RecipesAdapter
 import dev.haziqkamel.foody.util.NetworkResult
+import dev.haziqkamel.foody.util.observeOnce
 import dev.haziqkamel.foody.viewmodels.RecipesViewModel
 import kotlinx.android.synthetic.main.fragment_recipes.view.*
 import kotlinx.coroutines.launch
@@ -48,7 +49,7 @@ class RecipesFragment : Fragment() {
 
     private fun readDatabase() {
         lifecycleScope.launch {
-            mainViewModel.readRecipes.observe(viewLifecycleOwner) { database ->
+            mainViewModel.readRecipes.observeOnce(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {
                     mAdapter.setData(database[0].foodRecipe)
                     showShimmerEffect(false)
