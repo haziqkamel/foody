@@ -17,7 +17,7 @@ class RecipesBinding {
         fun errorImageViewVisibility(
             imageView: ImageView,
             apiResponse: NetworkResult<FoodRecipe>?,
-            database: List<RecipesEntity>
+            database: List<RecipesEntity>?
         ) {
             if (apiResponse is NetworkResult.Error && database.isNullOrEmpty()) {
                 imageView.visibility = View.VISIBLE
@@ -33,7 +33,7 @@ class RecipesBinding {
         fun errorTextViewVisibility(
             textView: TextView,
             apiResponse: NetworkResult<FoodRecipe>?,
-            database: List<RecipesEntity>
+            database: List<RecipesEntity>?
         ) {
             if (apiResponse is NetworkResult.Error && database.isNullOrEmpty()) {
                 textView.visibility = View.VISIBLE
