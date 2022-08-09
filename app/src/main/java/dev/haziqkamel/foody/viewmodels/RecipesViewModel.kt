@@ -16,6 +16,7 @@ import dev.haziqkamel.foody.util.Constant.Companion.QUERY_API_KEY
 import dev.haziqkamel.foody.util.Constant.Companion.QUERY_DIET
 import dev.haziqkamel.foody.util.Constant.Companion.QUERY_FILL_INGREDIENTS
 import dev.haziqkamel.foody.util.Constant.Companion.QUERY_NUMBER
+import dev.haziqkamel.foody.util.Constant.Companion.QUERY_SEARCH
 import dev.haziqkamel.foody.util.Constant.Companion.QUERY_TYPE
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -43,7 +44,7 @@ class RecipesViewModel @Inject constructor(
             dataStoreRepository.saveMealAndDietType(mealType, mealTypeId, dietType, dietTypeId)
         }
 
-    fun saveBackOnline(backOnline: Boolean) =
+    private fun saveBackOnline(backOnline: Boolean) =
         viewModelScope.launch(Dispatchers.IO) {
             dataStoreRepository.saveBackOnline(backOnline)
         }
@@ -62,6 +63,18 @@ class RecipesViewModel @Inject constructor(
         queries[QUERY_API_KEY] = API_KEY
         queries[QUERY_TYPE] = mealType
         queries[QUERY_DIET] = dietType
+        queries[QUERY_ADD_INFORMATION] = "true"
+        queries[QUERY_FILL_INGREDIENTS] = "true"
+
+        return queries
+    }
+
+    fun applySearchQueries(searchQuery: String):  HashMap<String, String> {
+        val queries: HashMap<String, String> = HashMap()
+
+        queries[QUERY_SEARCH] = searchQuery
+        queries[QUERY_NUMBER] = DEFAULT_RECIPES_NUMBER
+        queries[QUERY_API_KEY] = API_KEY
         queries[QUERY_ADD_INFORMATION] = "true"
         queries[QUERY_FILL_INGREDIENTS] = "true"
 

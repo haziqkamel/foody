@@ -28,4 +28,5 @@
 	<string name="gluten_free">Gluten Free</string>
 	<string name="vegetarian">Vegetarian</string>
 	<string name="apply_filter">Apply Filter</string>
+    <string name="search">Search</string>
 </resources>
