@@ -12,7 +12,7 @@ data class MissedIngredient(
     @SerializedName("amount")
     val amount: Double,
     @SerializedName("extendedName")
-    val extendedName: String,
+    val extendedName: String?,
     @SerializedName("id")
     val id: Int,
     @SerializedName("image")
