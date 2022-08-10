@@ -1,7 +1,7 @@
 package dev.haziqkamel.foody.data
 
 import dev.haziqkamel.foody.data.database.RecipesDao
-import dev.haziqkamel.foody.data.database.RecipesEntity
+import dev.haziqkamel.foody.data.database.entities.RecipesEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
