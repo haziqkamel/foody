@@ -24,4 +24,9 @@
 	//ActionBar Layout
 	<color name="actionBarBackgroundColor">@color/colorPrimary</color>
 
+	//MaterialCard
+	<color name="strokeColor">@color/lightMediumGray</color>
+	<color name="cardBackgroundColor">@color/white</color>
+	<color name="titleColor">@color/dark</color>
+
 </resources>
