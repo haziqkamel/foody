@@ -1,8 +1,11 @@
 package dev.haziqkamel.foody.models.foodRecipe
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Metric(
     @SerializedName("amount")
     val amount: Double,
@@ -10,4 +13,4 @@ data class Metric(
     val unitLong: String,
     @SerializedName("unitShort")
     val unitShort: String
-)
+) : Parcelable

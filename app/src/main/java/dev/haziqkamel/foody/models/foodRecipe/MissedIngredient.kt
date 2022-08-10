@@ -1,8 +1,11 @@
 package dev.haziqkamel.foody.models.foodRecipe
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class MissedIngredient(
     @SerializedName("aisle")
     val aisle: String,
@@ -28,4 +31,4 @@ data class MissedIngredient(
     val unitLong: String,
     @SerializedName("unitShort")
     val unitShort: String
-)
+) : Parcelable

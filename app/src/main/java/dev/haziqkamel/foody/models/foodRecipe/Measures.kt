@@ -1,11 +1,15 @@
 package dev.haziqkamel.foody.models.foodRecipe
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
+@Parcelize
 data class Measures(
     @SerializedName("metric")
-    val metric: Metric,
+    val metric: @RawValue Metric,
     @SerializedName("us")
-    val us: Us
-)
+    val us: @RawValue Us
+) : Parcelable

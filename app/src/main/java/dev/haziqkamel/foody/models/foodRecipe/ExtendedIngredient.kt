@@ -1,8 +1,12 @@
 package dev.haziqkamel.foody.models.foodRecipe
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
+@Parcelize
 data class ExtendedIngredient(
     @SerializedName("aisle")
     val aisle: String,
@@ -15,9 +19,9 @@ data class ExtendedIngredient(
     @SerializedName("image")
     val image: String,
     @SerializedName("measures")
-    val measures: Measures,
+    val measures: @RawValue Measures,
     @SerializedName("meta")
-    val meta: List<String>,
+    val meta: @RawValue List<String>,
     @SerializedName("name")
     val name: String,
     @SerializedName("nameClean")
@@ -28,4 +32,4 @@ data class ExtendedIngredient(
     val originalName: String,
     @SerializedName("unit")
     val unit: String
-)
+) : Parcelable

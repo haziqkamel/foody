@@ -1,8 +1,12 @@
 package dev.haziqkamel.foody.models.foodRecipe
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
+@Parcelize
 data class Result(
     @SerializedName("aggregateLikes")
     val aggregateLikes: Int,
@@ -21,7 +25,7 @@ data class Result(
     @SerializedName("dishTypes")
     val dishTypes: List<String>,
     @SerializedName("extendedIngredients")
-    val extendedIngredients: List<ExtendedIngredient>,
+    val extendedIngredients: @RawValue List<ExtendedIngredient>,
     @SerializedName("gaps")
     val gaps: String,
     @SerializedName("glutenFree")
@@ -43,9 +47,9 @@ data class Result(
     @SerializedName("missedIngredientCount")
     val missedIngredientCount: Int,
     @SerializedName("missedIngredients")
-    val missedIngredients: List<MissedIngredient>,
+    val missedIngredients: @RawValue List<MissedIngredient>,
     @SerializedName("occasions")
-    val occasions: List<Any>,
+    val occasions: @RawValue List<Any>,
     @SerializedName("preparationMinutes")
     val preparationMinutes: Int,
     @SerializedName("pricePerServing")
@@ -67,11 +71,11 @@ data class Result(
     @SerializedName("title")
     val title: String,
     @SerializedName("unusedIngredients")
-    val unusedIngredients: List<Any>,
+    val unusedIngredients: @RawValue List<Any>,
     @SerializedName("usedIngredientCount")
     val usedIngredientCount: Int,
     @SerializedName("usedIngredients")
-    val usedIngredients: List<Any>,
+    val usedIngredients: @RawValue List<Any>,
     @SerializedName("vegan")
     val vegan: Boolean,
     @SerializedName("vegetarian")
@@ -82,4 +86,4 @@ data class Result(
     val veryPopular: Boolean,
     @SerializedName("weightWatcherSmartPoints")
     val weightWatcherSmartPoints: Int
-)
+) : Parcelable
