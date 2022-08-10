@@ -12,6 +12,7 @@ import coil.load
 import dev.haziqkamel.foody.R
 import dev.haziqkamel.foody.models.foodRecipe.Result
 import dev.haziqkamel.foody.ui.fragments.recipes.RecipesFragmentDirections
+import org.jsoup.Jsoup
 
 class RecipesRowBinding {
 
@@ -64,6 +65,15 @@ class RecipesRowBinding {
                         view.setColorFilter(ContextCompat.getColor(view.context, R.color.green))
                     }
                 }
+            }
+        }
+
+        @BindingAdapter("parseHtml")
+        @JvmStatic
+        fun parseHtml(textView: TextView, description: String?) {
+            if (description != null) {
+                val desc = Jsoup.parse(description).text()
+                textView.text = desc
             }
         }
 

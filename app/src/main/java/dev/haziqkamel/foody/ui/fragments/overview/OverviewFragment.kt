@@ -10,6 +10,7 @@ import coil.load
 import dev.haziqkamel.foody.R
 import dev.haziqkamel.foody.models.foodRecipe.Result
 import kotlinx.android.synthetic.main.fragment_overview.view.*
+import org.jsoup.Jsoup
 
 class OverviewFragment : Fragment() {
     override fun onCreateView(
@@ -27,6 +28,10 @@ class OverviewFragment : Fragment() {
         view.like_tv.text = myBundle?.aggregateLikes.toString()
         view.time_tv.text = myBundle?.readyInMinutes.toString()
         view.summary_tv.text = myBundle?.summary
+        myBundle?.summary.let {
+            val summary = Jsoup.parse(it).text()
+            view.summary_tv.text = summary
+        }
 
         // Set color for meal attributes
         if(myBundle?.vegetarian == true) {
