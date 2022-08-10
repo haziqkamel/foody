@@ -15,7 +15,7 @@ data class Result(
     @SerializedName("cookingMinutes")
     val cookingMinutes: Int,
     @SerializedName("creditsText")
-    val creditsText: String,
+    val creditsText: String?,
     @SerializedName("cuisines")
     val cuisines: List<String>,
     @SerializedName("dairyFree")
@@ -39,7 +39,7 @@ data class Result(
     @SerializedName("imageType")
     val imageType: String,
     @SerializedName("license")
-    val license: String,
+    val license: String?,
     @SerializedName("likes")
     val likes: Int,
     @SerializedName("lowFodmap")
@@ -59,7 +59,7 @@ data class Result(
     @SerializedName("servings")
     val servings: Int,
     @SerializedName("sourceName")
-    val sourceName: String,
+    val sourceName: String?,
     @SerializedName("sourceUrl")
     val sourceUrl: String,
     @SerializedName("spoonacularSourceUrl")
