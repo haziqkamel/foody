@@ -4,20 +4,27 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
+import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import dev.haziqkamel.foody.R
 import dev.haziqkamel.foody.adapters.PagerAdapter
+import dev.haziqkamel.foody.data.database.entities.FavoritesEntity
 import dev.haziqkamel.foody.ui.fragments.ingredients.IngredientFragment
 import dev.haziqkamel.foody.ui.fragments.instructions.InstructionsFragment
 import dev.haziqkamel.foody.ui.fragments.overview.OverviewFragment
 import dev.haziqkamel.foody.util.Constant.Companion.RECIPE_RESULT_KEY
+import dev.haziqkamel.foody.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.activity_details.*
 
+@AndroidEntryPoint
 class DetailsActivity : AppCompatActivity() {
 
     private val args by navArgs<DetailsActivityArgs>()
+    private val mainViewModel: MainViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,8 +62,25 @@ class DetailsActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             finish()
+        } else if (item.itemId == R.id.save_to_favorites_menu) {
+            saveToFavorites(item)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun saveToFavorites(item: MenuItem) {
+        val favoriteEntity = FavoritesEntity(0, args.result)
+        mainViewModel.insertFavoriteRecipe(favoriteEntity)
+        changeMenuItemColor(item, R.color.yellow)
+        showSnackBar("Recipes Saved!")
+    }
+
+    private fun showSnackBar(message: String) {
+        Snackbar.make(details_layout, message, Snackbar.LENGTH_SHORT).setAction("OK") {}.show()
+    }
+
+    private fun changeMenuItemColor(item: MenuItem, color: Int) {
+        item.icon.setTint(ContextCompat.getColor(this, color))
     }
 
 
