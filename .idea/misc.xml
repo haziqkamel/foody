@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/layout/ingredients_row_layout.xml" value="0.3265625" />
         <entry key="app/src/main/res/layout/recipes_row_layout.xml" value="0.18451400329489293" />
         <entry key="app/src/main/res/menu/details_menu.xml" value="0.3265625" />
+        <entry key="app/src/main/res/menu/favorite_contextual_menu.xml" value="0.1" />
         <entry key="app/src/main/res/menu/recipes_menu.xml" value="0.32760416666666664" />
       </map>
     </option>
