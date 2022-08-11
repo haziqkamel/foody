@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import dev.haziqkamel.foody.R
 import dev.haziqkamel.foody.adapters.FavoriteRecipeAdapter
+import dev.haziqkamel.foody.databinding.FragmentFavoriteRecipesBinding
 import dev.haziqkamel.foody.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.fragment_favorite_recipes.view.*
 
@@ -20,23 +21,30 @@ class FavoriteRecipesFragment : Fragment() {
     private val mAdapter: FavoriteRecipeAdapter by lazy { FavoriteRecipeAdapter() }
     private val mainViewModel: MainViewModel by viewModels()
 
+    private var _binding: FragmentFavoriteRecipesBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_favorite_recipes, container, false)
+    ): View {
+        _binding = FragmentFavoriteRecipesBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.mainViewModel = mainViewModel
+        binding.mAdapter = mAdapter
 
-        setupRecyclerView(view.favorite_recipe_rv)
+        setupRecyclerView(binding.favoriteRecipeRv)
 
-        mainViewModel.readFavoriteRecipes.observe(viewLifecycleOwner) { favoriteEntity ->
-            mAdapter.setData(favoriteEntity)
-        }
-
-        return view
+        return binding.root
     }
 
     private fun setupRecyclerView(recyclerView: RecyclerView) {
         recyclerView.adapter = mAdapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+    }
+    
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
