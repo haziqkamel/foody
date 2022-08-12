@@ -70,7 +70,7 @@
                     android:layout_marginTop="12dp"
                     android:ellipsize="end"
                     android:maxLines="3"
-                    android:text="@{favoriteEntity.result.summary}"
+                    parseHtml="@{favoriteEntity.result.summary}"
                     android:textColor="@color/darkGray"
                     app:layout_constraintEnd_toEndOf="@+id/title"
                     app:layout_constraintStart_toStartOf="@+id/title"
