@@ -16,3 +16,4 @@ local.properties
 
 # Constant Class
 #app/src/main/java/dev/haziqkamel/foody/util/Constant.kt
+.idea/

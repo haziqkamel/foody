@@ -10,8 +10,10 @@
 		<item name="colorSecondaryVariant">@color/colorPrimary</item>
 		<item name="colorOnSecondary">@color/colorPrimary</item>
 		<!-- Status bar color. -->
-		<item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+		<item name="android:statusBarColor" >@color/statusBarColor</item>
 		<!-- Customize your theme here. -->
 		<item name="actionModeBackground">@color/contextualActionBarColor</item>
+		<item name="actionBarStyle">@style/CustomActionBarStyle</item>
+		<item name="bottomNavigationStyle">@style/CustomBottomNavigationStyle</item>
 	</style>
 </resources>
