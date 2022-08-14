@@ -62,7 +62,8 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
             recipesViewModel.backOnline = it
         }
 
-        lifecycleScope.launch {
+        // Launch this coroutines scope when we are in this fragment only.
+        lifecycleScope.launchWhenStarted {
             networkListener = NetworkListener()
             networkListener.checkNetworkAvailability(requireContext()).collect { status ->
                 recipesViewModel.networkStatus = status
