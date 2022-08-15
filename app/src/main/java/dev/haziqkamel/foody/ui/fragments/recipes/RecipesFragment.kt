@@ -19,9 +19,7 @@ import dev.haziqkamel.foody.util.NetworkListener
 import dev.haziqkamel.foody.util.NetworkResult
 import dev.haziqkamel.foody.util.observeOnce
 import dev.haziqkamel.foody.viewmodels.RecipesViewModel
-import kotlinx.android.synthetic.main.fragment_recipes.view.*
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.observeOn
 import kotlinx.coroutines.launch
 
 
@@ -186,8 +184,8 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
         binding.shimmerLayout.showShimmer(showShimmer)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }

@@ -13,7 +13,6 @@ import dev.haziqkamel.foody.databinding.FavoriteRecipeRowLayoutBinding
 import dev.haziqkamel.foody.ui.fragments.favoriteRecipes.FavoriteRecipesFragmentDirections
 import dev.haziqkamel.foody.util.RecipesDiffUtil
 import dev.haziqkamel.foody.viewmodels.MainViewModel
-import kotlinx.android.synthetic.main.favorite_recipe_row_layout.view.*
 
 class FavoriteRecipeAdapter(
     private val requireActivity: FragmentActivity,
@@ -31,7 +30,7 @@ class FavoriteRecipeAdapter(
 
     private lateinit var rootView: View
 
-    class MyViewHolder(private val binding: FavoriteRecipeRowLayoutBinding) :
+    class MyViewHolder(val binding: FavoriteRecipeRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(favoritesEntity: FavoritesEntity) {
@@ -64,7 +63,7 @@ class FavoriteRecipeAdapter(
         /**
          * Single Click Listener
          * */
-        holder.itemView.favoriteRecipesRowLayout.setOnClickListener {
+        holder.binding.favoriteRecipesRowLayout.setOnClickListener {
 
             if (multiSelection) {
                 applySelection(holder, currentRecipe)
@@ -81,7 +80,7 @@ class FavoriteRecipeAdapter(
         /**
          * Long Click Listener
          * */
-        holder.itemView.favoriteRecipesRowLayout.setOnLongClickListener {
+        holder.binding.favoriteRecipesRowLayout.setOnLongClickListener {
 
             if (!multiSelection) {
                 multiSelection = true
@@ -110,10 +109,10 @@ class FavoriteRecipeAdapter(
     }
 
     private fun changeRecipeStyle(holder: MyViewHolder, backgroundColor: Int, strokeColor: Int) {
-        holder.itemView.favoriteRecipesRowLayout.setBackgroundColor(
+        holder.binding.favoriteRecipesRowLayout.setBackgroundColor(
             ContextCompat.getColor(requireActivity, backgroundColor)
         )
-        holder.itemView.recipesCard.strokeColor =
+        holder.binding.recipesCard.strokeColor =
             ContextCompat.getColor(requireActivity, strokeColor)
     }
 

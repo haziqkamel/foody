@@ -14,12 +14,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.haziqkamel.foody.R
 import dev.haziqkamel.foody.adapters.PagerAdapter
 import dev.haziqkamel.foody.data.database.entities.FavoritesEntity
+import dev.haziqkamel.foody.databinding.ActivityDetailsBinding
+import dev.haziqkamel.foody.databinding.ActivityMainBinding
 import dev.haziqkamel.foody.ui.fragments.ingredients.IngredientFragment
 import dev.haziqkamel.foody.ui.fragments.instructions.InstructionsFragment
 import dev.haziqkamel.foody.ui.fragments.overview.OverviewFragment
 import dev.haziqkamel.foody.util.Constant.Companion.RECIPE_RESULT_KEY
 import dev.haziqkamel.foody.viewmodels.MainViewModel
-import kotlinx.android.synthetic.main.activity_details.*
 
 @AndroidEntryPoint
 class DetailsActivity : AppCompatActivity() {
@@ -27,15 +28,18 @@ class DetailsActivity : AppCompatActivity() {
     private val args by navArgs<DetailsActivityArgs>()
     private val mainViewModel: MainViewModel by viewModels()
 
+    private lateinit var binding: ActivityDetailsBinding
+
     private var recipeSaved = false
     private var recipeId = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details)
+        binding = ActivityDetailsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        setSupportActionBar(toolbar)
-        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+        setSupportActionBar(binding.toolbar)
+        binding.toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val fragments = ArrayList<Fragment>()
@@ -58,8 +62,8 @@ class DetailsActivity : AppCompatActivity() {
             supportFragmentManager,
         )
 
-        viewPager.adapter = adapter
-        tab_layout.setupWithViewPager(viewPager)
+        binding.viewPager.adapter = adapter
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -90,7 +94,8 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun showSnackBar(message: String) {
-        Snackbar.make(details_layout, message, Snackbar.LENGTH_SHORT).setAction("OK") {}.show()
+        Snackbar.make(binding.detailsLayout, message, Snackbar.LENGTH_SHORT).setAction("OK") {}
+            .show()
     }
 
     private fun changeMenuItemColor(item: MenuItem, color: Int) {

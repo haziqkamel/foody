@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import dev.haziqkamel.foody.R
 import dev.haziqkamel.foody.adapters.IngredientsAdapter
+import dev.haziqkamel.foody.databinding.FragmentIngredientBinding
 import dev.haziqkamel.foody.models.foodRecipe.Result
 import dev.haziqkamel.foody.util.Constant.Companion.RECIPE_RESULT_KEY
-import kotlinx.android.synthetic.main.fragment_ingredient.view.*
 
 class IngredientFragment : Fragment() {
 
@@ -18,28 +18,36 @@ class IngredientFragment : Fragment() {
     // 1. Initialize ingredient adapter
     private val mAdapter: IngredientsAdapter by lazy { IngredientsAdapter() }
 
+    private var _binding: FragmentIngredientBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_ingredient, container, false)
+        _binding = FragmentIngredientBinding.inflate(inflater, container, false)
 
         // 2. Get the arguments from DetailsActivity class
         val args = arguments
         val myBundle: Result? = args?.getParcelable(RECIPE_RESULT_KEY)
 
         //4. init fun
-        setupRecyclerView(view)
+        setupRecyclerView()
         // 5. set data of the adapter
         myBundle?.extendedIngredients?.let { mAdapter.setData(it) }
 
-        return view
+        return binding.root
     }
 
     // 3. Create fun to setup RecyclerView
-    private fun setupRecyclerView(view: View) {
-        view.ingredients_rv.adapter = mAdapter
-        view.ingredients_rv.layoutManager = LinearLayoutManager(requireContext())
+    private fun setupRecyclerView() {
+        binding.ingredientsRv.adapter = mAdapter
+        binding.ingredientsRv.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

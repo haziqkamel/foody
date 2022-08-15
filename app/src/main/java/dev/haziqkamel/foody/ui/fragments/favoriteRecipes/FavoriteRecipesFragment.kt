@@ -12,7 +12,6 @@ import dev.haziqkamel.foody.R
 import dev.haziqkamel.foody.adapters.FavoriteRecipeAdapter
 import dev.haziqkamel.foody.databinding.FragmentFavoriteRecipesBinding
 import dev.haziqkamel.foody.viewmodels.MainViewModel
-import kotlinx.android.synthetic.main.fragment_favorite_recipes.view.*
 
 @AndroidEntryPoint
 class FavoriteRecipesFragment : Fragment() {
@@ -61,8 +60,8 @@ class FavoriteRecipesFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         mAdapter.clearContextualActionMode()
         _binding = null
     }
